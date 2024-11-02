@@ -4,24 +4,24 @@ import { EmotionCommon } from 'src/ui-data/styles/EmotionCommon'
 import center = EmotionCommon.center
 
 
-const BottomInfo = React.memo(() => {
+const TopInfoPort = React.memo(() => {
   
   return (
-    <BottomInfoBox>
+    <TopInfoBox>
       <H>
-        Bottom info
+        Top info
       </H>
-    </BottomInfoBox>
+    </TopInfoBox>
   )
 })
-export default BottomInfo
+export default TopInfoPort
 
 
-const BottomInfoBox = styled.div`
+const TopInfoBox = styled.div`
   ${center};
   width: 100%;
-  height: 160px;
-  background-color: plum;
+  height: 70px;
+  background-color: #8cd9df;
 `
 
 const H = styled.h2`

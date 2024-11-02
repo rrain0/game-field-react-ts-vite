@@ -4,48 +4,49 @@ import { useResize } from 'src/util/view/useResize'
 import { getViewProps } from 'src/util/view/ViewProps'
 
 
-const topInfoH = 70
-const bottomInfoH = 160
+const leftInfoW = 36
 
 
 export type GameInfoProps = {
-  top: React.ReactNode
+  left: React.ReactNode
   field: React.ReactNode
-  bottom: React.ReactNode
+  right: React.ReactNode
 }
 
-const GameInfo = React.memo((props: GameInfoProps) => {
-  const { top, field, bottom } = props
+const GameInfoLand = React.memo((props: GameInfoProps) => {
+  const { left, field, right } = props
   
   console.log('rerender GameInfo')
   
   const gameInfoRef = useResize<HTMLDivElement>(useCallback((elem) => {
     if (elem) {
-      const elemProps = getViewProps(elem)
-      elem.style.setProperty('--field-max-w', `${elemProps.w}px`)
-      elem.style.setProperty('--field-max-h', `${elemProps.h - topInfoH - bottomInfoH}px`)
+      const { w, h } = getViewProps(elem)
+      elem.style.setProperty('--right-info-w', '360px')
+      if (w <= 750) elem.style.setProperty('--right-info-w', '240px')
+      elem.style.setProperty('--field-max-w', `calc( ${w - leftInfoW}px - var(--right-info-w) )`)
+      elem.style.setProperty('--field-max-h', `${h}px`)
     }
   }, []))
   
   return (
     <GameInfoFrame ref={gameInfoRef}>
       
-      <TopInfoFrame>
-        {top}
-      </TopInfoFrame>
+      <LeftInfoFrame>
+        {left}
+      </LeftInfoFrame>
       
       <GameFieldFrame>
         {field}
       </GameFieldFrame>
       
-      <BottomInfoFrame>
-        {bottom}
-      </BottomInfoFrame>
+      <RightInfoFrame>
+        {right}
+      </RightInfoFrame>
       
     </GameInfoFrame>
   )
 })
-export default GameInfo
+export default GameInfoLand
 
 
 
@@ -55,21 +56,21 @@ const GameInfoFrame = styled.div`
   width: 100%;
   background-color: #bcc3ff;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   align-items: center;
 `
 
-const TopInfoFrame = styled.div`
-  width: 100%;
+const LeftInfoFrame = styled.div`
+  height: 100%;
   flex-grow: 1;
   background-color: #529a9e;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: end;
+  justify-content: start;
 `
 
-const BottomInfoFrame = styled.div`
-  width: 100%;
+const RightInfoFrame = styled.div`
+  height: 100%;
   flex-grow: 1;
   display: flex;
   background-color: #a872a8;
@@ -78,8 +79,8 @@ const BottomInfoFrame = styled.div`
 `
 
 const GameFieldFrame = styled.div`
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

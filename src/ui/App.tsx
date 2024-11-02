@@ -2,12 +2,15 @@ import { css, Global } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { EmotionCommon } from 'src/ui-data/styles/EmotionCommon'
-import FieldLand from 'src/ui/FieldLand'
-import FieldPort from 'src/ui/FieldPort'
-import FieldSquared from 'src/ui/FieldSquared'
-import GameInfo from 'src/ui/GameInfo'
-import BottomInfo from 'src/ui/BottomInfo'
-import TopInfo from 'src/ui/TopInfo'
+import FieldLand from 'src/ui/Field/FieldLand'
+import FieldPort from 'src/ui/Field/FieldPort'
+import FieldSquared from 'src/ui/Field/FieldSquared'
+import GameInfoLand from 'src/ui/GameInfoLand/GameInfoLand'
+import LeftInfoLand from 'src/ui/GameInfoLand/LeftInfoLand'
+import RightInfoLand from 'src/ui/GameInfoLand/RightInfoLand'
+import GameInfoPort from 'src/ui/GameInfoPort/GameInfoPort'
+import BottomInfoPort from 'src/ui/GameInfoPort/BottomInfoPort'
+import TopInfoPort from 'src/ui/GameInfoPort/TopInfoPort'
 import rowWrap = EmotionCommon.rowWrap
 
 const App = React.memo(() => {
@@ -20,7 +23,7 @@ const App = React.memo(() => {
           #root {
             display: flex;
             flex-flow: column nowrap;
-            padding: 16px 16px 64px;
+            padding: 16px 16px 512px;
             gap: 16px;
           }
         `}
@@ -34,24 +37,27 @@ const App = React.memo(() => {
       
       
       
+      
+      {/* PORT */}
+      
       <div css={css`${rowWrap}; gap: 16px;`}>
         
         <WindowPort>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldSquared />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPort>
         
         <WindowPortSm>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldSquared />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPortSm>
@@ -64,20 +70,20 @@ const App = React.memo(() => {
         
         <WindowPort>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldPort />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPort>
         
         <WindowPortSm>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldPort />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPortSm>
@@ -90,25 +96,99 @@ const App = React.memo(() => {
         
         <WindowPort>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldLand />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPort>
         
         <WindowPortSm>
           <Frame>
-            <GameInfo
-              top={<TopInfo />}
+            <GameInfoPort
+              top={<TopInfoPort />}
               field={<FieldLand />}
-              bottom={<BottomInfo />}
+              bottom={<BottomInfoPort />}
             />
           </Frame>
         </WindowPortSm>
         
       </div>
+      
+      
+      
+      
+      {/* LAND */}
+      
+      
+      <WindowLand>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldSquared />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLand>
+      
+      <WindowLandSm>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldSquared />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLandSm>
+      
+      
+      
+      
+      
+      <WindowLand>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldPort />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLand>
+      
+      <WindowLandSm>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldPort />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLandSm>
+      
+      
+      
+      
+        
+      <WindowLand>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldLand />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLand>
+      
+      <WindowLandSm>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldLand />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLandSm>
       
       
       
@@ -123,13 +203,21 @@ const WindowPort = styled.div`
   width: 360px;
   height: 740px;
   resize: both;
-  overflow: scroll;
+  overflow: hidden;
 `
-const WindowPortSm = styled.div`
+const WindowPortSm = styled(WindowPort)`
   width: 320px;
   height: 540px;
+`
+const WindowLand = styled.div`
+  width: 1920px;
+  height: 1080px;
   resize: both;
   overflow: hidden;
+`
+const WindowLandSm = styled(WindowLand)`
+  width: 922px;
+  height: 487px;
 `
 
 const Frame = styled.div`
