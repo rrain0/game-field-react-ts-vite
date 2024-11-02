@@ -5,6 +5,8 @@ import { getViewProps } from 'src/util/view/ViewProps'
 
 
 const leftInfoW = 36
+const rightInfoW = 360
+const rightInfoWSm = 240
 
 
 export type GameInfoProps = {
@@ -21,15 +23,25 @@ const GameInfoLand = React.memo((props: GameInfoProps) => {
   const gameInfoRef = useResize<HTMLDivElement>(useCallback((elem) => {
     if (elem) {
       const { w, h } = getViewProps(elem)
-      elem.style.setProperty('--right-info-w', '360px')
-      if (w <= 750) elem.style.setProperty('--right-info-w', '240px')
-      elem.style.setProperty('--field-max-w', `calc( ${w - leftInfoW}px - var(--right-info-w) )`)
+      elem.style.setProperty('--right-info-w', `${rightInfoW}px`)
+      if (w <= 750) elem.style.setProperty('--right-info-w', `${rightInfoWSm}px`)
+      elem.style.setProperty(
+        '--field-max-w',
+        `calc( ${w}px - var(--left-info-w) - var(--right-info-w) )`
+      )
       elem.style.setProperty('--field-max-h', `${h}px`)
     }
   }, []))
   
   return (
-    <GameInfoFrame ref={gameInfoRef}>
+    <GameInfoFrame
+      ref={gameInfoRef}
+      style={{
+        // @ts-expect-error
+        '--left-info-w': `${leftInfoW}px`,
+        '--right-info-w': `${rightInfoW}px`,
+      }}
+    >
       
       <LeftInfoFrame>
         {left}

@@ -18,10 +18,10 @@ export default TopInfoPort
 
 
 const TopInfoBox = styled.div`
-  ${center};
   width: 100%;
-  height: 70px;
+  height: var(--top-info-h);
   background-color: #8cd9df;
+  ${center};
 `
 
 const H = styled.h2`

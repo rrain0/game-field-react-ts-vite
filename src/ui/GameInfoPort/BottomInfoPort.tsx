@@ -18,10 +18,10 @@ export default BottomInfoPort
 
 
 const BottomInfoBox = styled.div`
-  ${center};
   width: 100%;
-  height: 160px;
+  height: var(--bottom-info-h);
   background-color: plum;
+  ${center};
 `
 
 const H = styled.h2`

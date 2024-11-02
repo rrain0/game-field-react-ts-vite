@@ -23,12 +23,22 @@ const GameInfoPort = React.memo((props: GameInfoProps) => {
     if (elem) {
       const elemProps = getViewProps(elem)
       elem.style.setProperty('--field-max-w', `${elemProps.w}px`)
-      elem.style.setProperty('--field-max-h', `${elemProps.h - topInfoH - bottomInfoH}px`)
+      elem.style.setProperty(
+        '--field-max-h',
+        `calc( ${elemProps.h}px - var(--top-info-h) - var(--bottom-info-h) )`
+      )
     }
   }, []))
   
   return (
-    <GameInfoFrame ref={gameInfoRef}>
+    <GameInfoFrame
+      ref={gameInfoRef}
+      style={{
+        // @ts-expect-error
+        '--top-info-h': `${topInfoH}px`,
+        '--bottom-info-h': `${bottomInfoH}px`,
+      }}
+    >
       
       <TopInfoFrame>
         {top}

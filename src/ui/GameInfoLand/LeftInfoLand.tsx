@@ -18,10 +18,10 @@ export default LeftInfoLand
 
 
 const LeftInfoBox = styled.div`
-  ${center};
-  width: 36px;
+  width: var(--left-info-w);
   height: 100%;
   background-color: #8cd9df;
+  ${center};
   writing-mode: vertical-rl;
   text-orientation: sideways;
 `

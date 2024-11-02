@@ -18,10 +18,10 @@ export default RightInfoLand
 
 
 const RightInfoBox = styled.div`
-  ${center};
   width: var(--right-info-w);
   height: 100%;
   background-color: plum;
+  ${center};
 `
 
 const H = styled.h2`
