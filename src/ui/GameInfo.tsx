@@ -83,5 +83,5 @@ const GameFieldFrame = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
 `
