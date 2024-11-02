@@ -29,6 +29,12 @@ const App = React.memo(() => {
       
       
       <div css={css`${rowWrap}; gap: 16px;`}>
+        Каждое мини-окошко можно ресайзить мышкой
+      </div>
+      
+      
+      
+      <div css={css`${rowWrap}; gap: 16px;`}>
         
         <WindowPort>
           <Frame>
