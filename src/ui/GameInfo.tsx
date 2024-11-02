@@ -17,6 +17,8 @@ export type GameInfoProps = {
 const GameInfo = React.memo((props: GameInfoProps) => {
   const { top, field, bottom } = props
   
+  console.log('rerender GameInfo')
+  
   const gameInfoRef = useResize<HTMLDivElement>(useCallback((elem) => {
     if (elem) {
       const elemProps = getViewProps(elem)

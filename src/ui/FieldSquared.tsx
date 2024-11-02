@@ -4,9 +4,21 @@ import React from 'react'
 
 const FieldSquared = React.memo(() => {
   
+  console.log('rerender FieldSquared')
+  
   return (
     <Field>
-    
+      
+      <Cell color="w" />
+      <Cell color="b" />
+      <Cell color="w" />
+      <Cell color="b" />
+      
+      <Cell color="b" />
+      <Cell color="w" />
+      <Cell color="b" />
+      <Cell color="w" />
+      
       <Cell color="w" />
       <Cell color="b" />
       <Cell color="w" />
@@ -17,16 +29,6 @@ const FieldSquared = React.memo(() => {
       <Cell color="b" />
       <Cell color="w" />
     
-      <Cell color="w" />
-      <Cell color="b" />
-      <Cell color="w" />
-      <Cell color="b" />
-      
-      <Cell color="b" />
-      <Cell color="w" />
-      <Cell color="b" />
-      <Cell color="w" />
-      
     </Field>
   )
 })

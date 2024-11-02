@@ -2,39 +2,41 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 
-const FieldSquared = React.memo(() => {
+const FieldPort = React.memo(() => {
+  
+  console.log('rerender FieldPort')
   
   return (
     <Field>
-    
+      
+      <Cell color="w" />
+      <Cell color="b" />
+      
+      <Cell color="b" />
+      <Cell color="w" />
+      
+      <Cell color="w" />
+      <Cell color="b" />
+      
+      <Cell color="b" />
+      <Cell color="w" />
+      
+      <Cell color="w" />
+      <Cell color="b" />
+      
+      <Cell color="b" />
+      <Cell color="w" />
+      
       <Cell color="w" />
       <Cell color="b" />
       
       <Cell color="b" />
       <Cell color="w" />
     
-      <Cell color="w" />
-      <Cell color="b" />
-      
-      <Cell color="b" />
-      <Cell color="w" />
-    
-      <Cell color="w" />
-      <Cell color="b" />
-      
-      <Cell color="b" />
-      <Cell color="w" />
-    
-      <Cell color="w" />
-      <Cell color="b" />
-      
-      <Cell color="b" />
-      <Cell color="w" />
-      
     </Field>
   )
 })
-export default FieldSquared
+export default FieldPort
 
 
 const Field = styled.div`
