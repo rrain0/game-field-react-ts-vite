@@ -30,6 +30,8 @@ export default defineConfig({
     },
   },
   
+  assetsInclude: ['**/*.html'],
+  
   plugins: [
     react({
       jsxImportSource: '@emotion/react',

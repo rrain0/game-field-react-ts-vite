@@ -2,9 +2,9 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 
-const FieldSquared = React.memo(() => {
+const FieldSquare = React.memo(() => {
   
-  console.log('rerender FieldSquared')
+  console.log('rerender FieldSquare')
   
   return (
     <Field>
@@ -32,7 +32,7 @@ const FieldSquared = React.memo(() => {
     </Field>
   )
 })
-export default FieldSquared
+export default FieldSquare
 
 
 const Field = styled.div`

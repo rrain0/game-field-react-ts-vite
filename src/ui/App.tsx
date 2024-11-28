@@ -4,7 +4,8 @@ import React from 'react'
 import { EmotionCommon } from 'src/ui-data/styles/EmotionCommon'
 import FieldLand from 'src/ui/Field/FieldLand'
 import FieldPort from 'src/ui/Field/FieldPort'
-import FieldSquared from 'src/ui/Field/FieldSquared'
+import FieldSquare from 'src/ui/Field/FieldSquare'
+import FieldDynamicIframe from 'src/ui/Field/FieldDynamicIframe'
 import GameInfoLand from 'src/ui/GameInfoLand/GameInfoLand'
 import LeftInfoLand from 'src/ui/GameInfoLand/LeftInfoLand'
 import RightInfoLand from 'src/ui/GameInfoLand/RightInfoLand'
@@ -31,14 +32,12 @@ const App = React.memo(() => {
       
       
       
-      <div css={css`${rowWrap}; gap: 16px;`}>
-        Каждое мини-окошко можно ресайзить мышкой
-      </div>
+      <Text>Каждое мини-окошко можно ресайзить мышкой</Text>
       
       
       
       
-      {/* PORT */}
+      <Text>Window portrait - Field square</Text>
       
       <div css={css`${rowWrap}; gap: 16px;`}>
         
@@ -46,7 +45,7 @@ const App = React.memo(() => {
           <Frame>
             <GameInfoPort
               top={<TopInfoPort />}
-              field={<FieldSquared />}
+              field={<FieldSquare />}
               bottom={<BottomInfoPort />}
             />
           </Frame>
@@ -56,7 +55,7 @@ const App = React.memo(() => {
           <Frame>
             <GameInfoPort
               top={<TopInfoPort />}
-              field={<FieldSquared />}
+              field={<FieldSquare />}
               bottom={<BottomInfoPort />}
             />
           </Frame>
@@ -65,6 +64,9 @@ const App = React.memo(() => {
       </div>
       
       
+      
+      
+      <Text>Window portrait - Field portrait</Text>
       
       <div css={css`${rowWrap}; gap: 16px;`}>
         
@@ -91,6 +93,8 @@ const App = React.memo(() => {
       </div>
       
       
+      
+      <Text>Window portrait - Field landscape</Text>
       
       <div css={css`${rowWrap}; gap: 16px;`}>
         
@@ -119,14 +123,16 @@ const App = React.memo(() => {
       
       
       
-      {/* LAND */}
       
+      
+      
+      <Text>Window landscape - Field square</Text>
       
       <WindowLand>
         <Frame>
           <GameInfoLand
             left={<LeftInfoLand />}
-            field={<FieldSquared />}
+            field={<FieldSquare />}
             right={<RightInfoLand />}
           />
         </Frame>
@@ -136,7 +142,7 @@ const App = React.memo(() => {
         <Frame>
           <GameInfoLand
             left={<LeftInfoLand />}
-            field={<FieldSquared />}
+            field={<FieldSquare />}
             right={<RightInfoLand />}
           />
         </Frame>
@@ -145,6 +151,8 @@ const App = React.memo(() => {
       
       
       
+      
+      <Text>Window landscape - Field portrait</Text>
       
       <WindowLand>
         <Frame>
@@ -169,26 +177,58 @@ const App = React.memo(() => {
       
       
       
+      
+      <Text>Window landscape - Field landscape</Text>
+      
+      <WindowLand>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldLand />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLand>
+      
+      <WindowLandSm>
+        <Frame>
+          <GameInfoLand
+            left={<LeftInfoLand />}
+            field={<FieldLand />}
+            right={<RightInfoLand />}
+          />
+        </Frame>
+      </WindowLandSm>
+      
+      
+      
+      
+      <Text>Window portrait - Field dynamic iframe</Text>
+      <Text>В консоли выберите iframe поля и установите aspect ratio с помощью window.setAspectRatio(1/2)</Text>
+      
+      <div css={css`${rowWrap}; gap: 16px;`}>
         
-      <WindowLand>
-        <Frame>
-          <GameInfoLand
-            left={<LeftInfoLand />}
-            field={<FieldLand />}
-            right={<RightInfoLand />}
-          />
-        </Frame>
-      </WindowLand>
+        <WindowPort>
+          <Frame>
+            <GameInfoPort
+              top={<TopInfoPort />}
+              field={<FieldDynamicIframe />}
+              bottom={<BottomInfoPort />}
+            />
+          </Frame>
+        </WindowPort>
+        
+        {/* <WindowPortSm>
+          <Frame>
+            <GameInfoPort
+              top={<TopInfoPort />}
+              field={<FieldSquare />}
+              bottom={<BottomInfoPort />}
+            />
+          </Frame>
+        </WindowPortSm> */}
       
-      <WindowLandSm>
-        <Frame>
-          <GameInfoLand
-            left={<LeftInfoLand />}
-            field={<FieldLand />}
-            right={<RightInfoLand />}
-          />
-        </Frame>
-      </WindowLandSm>
+      </div>
       
       
       
@@ -197,6 +237,11 @@ const App = React.memo(() => {
 })
 export default App
 
+
+const Text = styled.div`
+  ${rowWrap};
+  gap: 16px;
+`
 
 
 const WindowPort = styled.div`
